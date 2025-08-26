@@ -26,7 +26,6 @@ export async function getProducts() {
   }
 }
 
-// Get single product by ID
 export async function getProductById(productId) {
   try {
     return await databases.getDocument(
