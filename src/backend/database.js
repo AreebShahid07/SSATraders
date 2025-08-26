@@ -14,7 +14,6 @@ export async function addProduct(product) {
   }
 }
 
-// Get all products
 export async function getProducts() {
   try {
     return await databases.listDocuments(
