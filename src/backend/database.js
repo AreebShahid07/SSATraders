@@ -39,7 +39,6 @@ export async function getProductById(productId) {
   }
 }
 
-// Update product
 export async function updateProduct(productId, updates) {
   try {
     return await databases.updateDocument(
@@ -54,7 +53,6 @@ export async function updateProduct(productId, updates) {
   }
 }
 
-// Delete product
 export async function deleteProduct(productId) {
   try {
     return await databases.deleteDocument(
