@@ -40,7 +40,7 @@ export default function SignupForm() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 p-4">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 p-4">
       <Card className="w-full max-w-md shadow-2xl rounded-3xl border border-gray-200 backdrop-blur-sm">
         <CardHeader>
           <CardTitle className="text-center text-3xl font-bold text-gray-800">
