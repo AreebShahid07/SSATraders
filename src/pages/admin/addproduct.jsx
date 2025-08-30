@@ -9,7 +9,8 @@ import {
   FileText,
   Hash,
   Image as ImageIcon,
-  HomeIcon
+  HomeIcon,
+  BoltIcon
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -58,41 +59,46 @@ export default function AddProductForm() {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 p-4">
-      {/* Sidebar / Topbar */}
       <aside className="w-full md:w-64 bg-white/70 backdrop-blur-lg shadow-xl rounded-2xl flex flex-col md:h-auto p-4 md:p-6 border border-white/30 mb-4 md:mb-0">
-        <div className="text-xl md:text-2xl font-extrabold text-indigo-700 mb-6 md:mb-10 flex items-center gap-2 justify-center md:justify-start">
-          <LayoutDashboard className="h-6 w-6 md:h-7 md:w-7" /> Admin Panel
-        </div>
-
-        <nav className="flex flex-row md:flex-col gap-2 md:gap-3 justify-center md:justify-start">
-          <Link to="/admin/products" className="flex-1 md:flex-none">
-            <Button
-              variant="outline"
-              className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
-            >
-              <Package className="h-4 w-4 md:h-5 md:w-5" /> Products
-            </Button>
-          </Link>
-          <Link to="/admin/add-product" className="flex-1 md:flex-none">
-            <Button
-              variant="outline"
-              className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
-            >
-              <PlusCircle className="h-4 w-4 md:h-5 md:w-5" /> Add
-            </Button>
-          </Link>
-          <Link to="/admin" className="flex-1 md:flex-none">
-            <Button
-              variant="outline"
-              className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
-            >
-              <HomeIcon className="h-4 w-4 md:h-5 md:w-5" /> Home
-            </Button>
-          </Link>
-        </nav>
-      </aside>
-
-      {/* Main Content */}
+              <div className="text-xl md:text-2xl font-extrabold text-indigo-700 mb-6 md:mb-10 flex items-center gap-2 justify-center md:justify-start">
+                <LayoutDashboard className="h-6 w-6 md:h-7 md:w-7" /> Admin Panel
+              </div>
+      
+              <nav className="flex flex-row md:flex-col gap-2 md:gap-3 justify-center md:justify-start">
+                <Link to="/admin/products" className="flex-1 md:flex-none">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
+                  >
+                    <Package className="h-4 w-4 md:h-5 md:w-5" /> Products
+                  </Button>
+                </Link>
+                <Link to="/admin/add-product" className="flex-1 md:flex-none">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
+                  >
+                    <PlusCircle className="h-4 w-4 md:h-5 md:w-5" /> Add
+                  </Button>
+                </Link>
+                <Link to="/admin" className="flex-1 md:flex-none">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
+                  >
+                    <HomeIcon className="h-4 w-4 md:h-5 md:w-5" /> Home
+                  </Button>
+                </Link>
+                <Link to="/" className="flex-1 md:flex-none">
+                  <Button
+                    variant="outline"
+                    className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
+                  >
+                    <BoltIcon className="h-4 w-4 md:h-5 md:w-5" /> Website
+                  </Button>
+                </Link>
+              </nav>
+            </aside>
       <main className="flex-1 p-4 md:p-8 flex items-center justify-center">
         <Card className="w-full max-w-md md:max-w-lg shadow-2xl rounded-3xl border border-gray-200 backdrop-blur-sm bg-white/90">
           <CardHeader>
@@ -106,7 +112,6 @@ export default function AddProductForm() {
 
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 md:space-y-5">
-              {/* Product Name */}
               <div>
                 <Label htmlFor="name">Product Name</Label>
                 <div className="relative">
@@ -124,7 +129,6 @@ export default function AddProductForm() {
                 )}
               </div>
 
-              {/* Price */}
               <div>
                 <Label htmlFor="price">Price</Label>
                 <div className="relative">
@@ -142,8 +146,6 @@ export default function AddProductForm() {
                   <p className="text-red-500 text-xs">{errors.price.message}</p>
                 )}
               </div>
-
-              {/* Quantity */}
               <div>
                 <Label htmlFor="quantity">Quantity</Label>
                 <div className="relative">
@@ -160,8 +162,6 @@ export default function AddProductForm() {
                   <p className="text-red-500 text-xs">{errors.quantity.message}</p>
                 )}
               </div>
-
-              {/* Description */}
               <div>
                 <Label htmlFor="description">Description</Label>
                 <div className="relative">
@@ -179,7 +179,6 @@ export default function AddProductForm() {
                 )}
               </div>
 
-              {/* Image Upload */}
               <div>
                 <Label htmlFor="image">Product Image</Label>
                 <div className="relative">
@@ -194,7 +193,6 @@ export default function AddProductForm() {
                 </div>
               </div>
 
-              {/* Submit */}
               <Button
                 type="submit"
                 disabled={loading}

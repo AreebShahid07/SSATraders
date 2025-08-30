@@ -53,7 +53,6 @@ export default function LoginForm() {
 
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            {/* Email */}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
@@ -77,7 +76,6 @@ export default function LoginForm() {
               )}
             </div>
 
-            {/* Password */}
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <div className="relative">
@@ -100,7 +98,6 @@ export default function LoginForm() {
               )}
             </div>
 
-            {/* Submit */}
             <Button
               type="submit"
               className="w-full rounded-xl py-3 text-base font-medium shadow-md hover:scale-[1.02] transition-transform"
@@ -109,14 +106,12 @@ export default function LoginForm() {
             </Button>
           </form>
 
-          {/* Divider */}
           <div className="flex items-center gap-2 my-6">
             <div className="h-px flex-1 bg-gray-300"></div>
             <span className="text-gray-500 text-sm">OR</span>
             <div className="h-px flex-1 bg-gray-300"></div>
           </div>
 
-          {/* Google Login */}
           <Button
             variant="outline"
             className="w-full flex items-center justify-center gap-2 rounded-xl py-3 hover:bg-gray-50 transition"
@@ -126,7 +121,6 @@ export default function LoginForm() {
             <span className="font-medium">Continue with Google</span>
           </Button>
 
-          {/* Footer */}
           <p className="text-center text-sm text-gray-500 mt-6">
             Don’t have an account?{" "}
             <a

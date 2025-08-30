@@ -3,13 +3,11 @@ import { useForm } from "react-hook-form"
 import { FcGoogle } from "react-icons/fc"
 import { User, Mail, Lock } from "lucide-react"
 
-// shadcn/ui components
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 
-// backend functions
 import { signup, loginWithGoogle } from "../backend/auth"
 
 export default function SignupForm() {
@@ -53,7 +51,7 @@ export default function SignupForm() {
 
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            {/* Name */}
+            
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
               <div className="relative">
@@ -71,7 +69,7 @@ export default function SignupForm() {
               )}
             </div>
 
-            {/* Email */}
+           
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
@@ -95,7 +93,6 @@ export default function SignupForm() {
               )}
             </div>
 
-            {/* Password */}
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <div className="relative">
@@ -118,7 +115,6 @@ export default function SignupForm() {
               )}
             </div>
 
-            {/* Submit */}
             <Button
               type="submit"
               className="w-full rounded-xl py-3 text-base font-medium shadow-md hover:scale-[1.02] transition-transform"
@@ -127,14 +123,12 @@ export default function SignupForm() {
             </Button>
           </form>
 
-          {/* Divider */}
           <div className="flex items-center gap-2 my-6">
             <div className="h-px flex-1 bg-gray-300"></div>
             <span className="text-gray-500 text-sm">OR</span>
             <div className="h-px flex-1 bg-gray-300"></div>
           </div>
 
-          {/* Google Login */}
           <Button
             variant="outline"
             className="w-full flex items-center justify-center gap-2 rounded-xl py-3 hover:bg-gray-50 transition"
@@ -144,7 +138,6 @@ export default function SignupForm() {
             <span className="font-medium">Continue with Google</span>
           </Button>
 
-          {/* Footer */}
           <p className="text-center text-sm text-gray-500 mt-6">
             Already have an account?{" "}
             <a
