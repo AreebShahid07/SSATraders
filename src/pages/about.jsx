@@ -13,7 +13,7 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="space-y-4 text-gray-700">
           <p>
-            <span className="font-semibold">Textile Trading</span>
+            <span className="font-semibold">Textile - Trading</span>
           </p>
           <p>
             <span className="font-semibold">SSA TRADERS</span> deals in{" "}
