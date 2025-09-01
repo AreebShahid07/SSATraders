@@ -215,16 +215,19 @@ function Homepage() {
           Explore our wide range of textile machinery and spare parts today.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+        <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
           <Button
             size="lg"
-            className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold rounded-xl px-8 py-4 shadow-lg transition-all duration-300 hover:scale-105 group"
+            className="w-full sm:w-auto max-w-xs bg-gradient-to-r from-yellow-400 to-yellow-500 
+               hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold 
+               rounded-xl px-8 py-4 shadow-lg transition-all duration-300 
+               hover:scale-105 group text-center"
             onClick={() => navigate("/products")}
           >
             Explore Products
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
           </Button>
-          <div className="flex gap-3">
+             <div className="flex gap-3 justify-center sm:justify-start w-full sm:w-auto">
             <Button
               size="lg"
               onClick={() => (window.location.href = "tel:+923317500543")}
