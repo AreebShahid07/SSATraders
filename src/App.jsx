@@ -14,6 +14,7 @@ import MainLayout from "./components/mainlayout";
 import AboutPage from "./pages/about";
 import AdminRoute from "./components/AdminRoute";
 import PolicyPage from "./pages/privacypolicy";
+import Categories from "./pages/admin/categories";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/admin/add-product" element={<AddProductForm />} />
           <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/categories" element={<Categories />} />
         </Route>
       </Routes>
     </Router>

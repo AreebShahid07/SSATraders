@@ -1,41 +1,41 @@
-import React from "react"
-import { useForm } from "react-hook-form"
-import { FcGoogle } from "react-icons/fc"
-import { User, Mail, Lock } from "lucide-react"
+import React from "react";
+import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import { User, Mail, Lock } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 
-import { signup, loginWithGoogle } from "../backend/auth"
+import { signup, loginWithGoogle } from "../backend/auth";
 
 export default function SignupForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      const user = await signup(data.email, data.password, data.name)
-      console.log("User created:", user)
-      alert("Signup successful!")
+      const user = await signup(data.email, data.password, data.name);
+      console.log("User created:", user);
+      alert("Signup successful!");
     } catch (err) {
-      console.error("Signup error:", err)
-      alert(err.message)
+      console.error("Signup error:", err);
+      alert(err.message);
     }
-  }
+  };
 
   const handleGoogleLogin = async () => {
     try {
-      await loginWithGoogle()
+      await loginWithGoogle();
     } catch (err) {
-      console.error("Google login error:", err)
-      alert(err.message)
+      console.error("Google login error:", err);
+      alert(err.message);
     }
-  }
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 p-4">
@@ -51,7 +51,6 @@ export default function SignupForm() {
 
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
               <div className="relative">
@@ -69,7 +68,6 @@ export default function SignupForm() {
               )}
             </div>
 
-           
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
@@ -150,5 +148,5 @@ export default function SignupForm() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

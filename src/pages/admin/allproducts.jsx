@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { getProducts, deleteProduct, updateProduct } from "../../backend/database.js"
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card"
+  getProducts,
+  deleteProduct,
+  updateProduct,
+} from "../../backend/database.js";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -14,9 +13,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Loader2,
   Edit,
@@ -25,66 +24,65 @@ import {
   Package,
   PlusCircle,
   HomeIcon,
-  BoltIcon
-} from "lucide-react"
-import DeleteProduct from "./deleteproduct"
-import EditProduct from "./editproduct"
+  BoltIcon,
+} from "lucide-react";
+import DeleteProduct from "./deleteproduct";
+import EditProduct from "./editproduct";
 
 export default function AdminProducts() {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [selectedProduct, setSelectedProduct] = useState(null)
-  const [editingProduct, setEditingProduct] = useState(null)
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [editingProduct, setEditingProduct] = useState(null);
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await getProducts()
-        setProducts(res.documents)
+        const res = await getProducts();
+        setProducts(res.documents);
       } catch (err) {
-        console.error("Error fetching products:", err)
+        console.error("Error fetching products:", err);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   const handleDeleteConfirm = async (id) => {
     try {
-      await deleteProduct(id)
-      setProducts((prev) => prev.filter((p) => p.$id !== id))
+      await deleteProduct(id);
+      setProducts((prev) => prev.filter((p) => p.$id !== id));
     } catch (err) {
-      console.error("Failed to delete product:", err)
+      console.error("Failed to delete product:", err);
     } finally {
-      setSelectedProduct(null)
+      setSelectedProduct(null);
     }
-  }
+  };
 
   const handleEditSave = async (id, updatedData) => {
     try {
-      const updated = await updateProduct(id, updatedData)
+      const updated = await updateProduct(id, updatedData);
       setProducts((prev) =>
         prev.map((p) => (p.$id === id ? { ...p, ...updated } : p))
-      )
+      );
     } catch (err) {
-      console.error("Failed to update product:", err)
+      console.error("Failed to update product:", err);
     } finally {
-      setEditingProduct(null)
+      setEditingProduct(null);
     }
-  }
+  };
 
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200">
         <Loader2 className="animate-spin w-10 h-10 text-indigo-600" />
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 p-4">
-      
       <aside className="w-full md:w-64 bg-white/70 backdrop-blur-lg shadow-xl rounded-2xl flex flex-col md:h-auto p-4 md:p-6 border border-white/30 mb-4 md:mb-0">
         <div className="text-xl md:text-2xl font-extrabold text-indigo-700 mb-6 md:mb-10 flex items-center gap-2 justify-center md:justify-start">
           <LayoutDashboard className="h-6 w-6 md:h-7 md:w-7" /> Admin Panel
@@ -115,14 +113,14 @@ export default function AdminProducts() {
               <HomeIcon className="h-4 w-4 md:h-5 md:w-5" /> Home
             </Button>
           </Link>
-                 <Link to="/" className="flex-1 md:flex-none">
-                  <Button
-                    variant="outline"
-                    className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
-                  >
-                    <BoltIcon className="h-4 w-4 md:h-5 md:w-5" /> Website
-                  </Button>
-                </Link>
+          <Link to="/admin/categories" className="flex-1 md:flex-none">
+            <Button
+              variant="outline"
+              className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
+            >
+              <BoltIcon className="h-4 w-4 md:h-5 md:w-5" /> Category
+            </Button>
+          </Link>
         </nav>
       </aside>
 
@@ -151,10 +149,7 @@ export default function AdminProducts() {
                         Price
                       </TableHead>
                       <TableHead className="font-semibold text-gray-700 text-xs md:text-sm">
-                        Quantity
-                      </TableHead>
-                      <TableHead className="font-semibold text-gray-700 text-xs md:text-sm">
-                        Description
+                        Category
                       </TableHead>
                       <TableHead className="font-semibold text-gray-700 text-xs md:text-sm">
                         Actions
@@ -178,15 +173,15 @@ export default function AdminProducts() {
                           {product.name}
                         </TableCell>
                         <TableCell>
-                          <Badge variant="outline" className="px-2 py-1 text-xs md:text-sm">
+                          <Badge
+                            variant="outline"
+                            className="px-2 py-1 text-xs md:text-sm"
+                          >
                             ${product.price}
                           </Badge>
                         </TableCell>
                         <TableCell className="text-sm md:text-base">
-                          {product.quantity}
-                        </TableCell>
-                        <TableCell className="max-w-[120px] md:max-w-xs truncate text-gray-600 text-xs md:text-sm">
-                          {product.description}
+                          {product.category}
                         </TableCell>
                         <TableCell className="flex flex-col md:flex-row gap-2 mt-2">
                           <Button
@@ -227,5 +222,5 @@ export default function AdminProducts() {
         onCancel={() => setEditingProduct(null)}
       />
     </div>
-  )
+  );
 }

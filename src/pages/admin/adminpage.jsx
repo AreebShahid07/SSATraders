@@ -1,8 +1,14 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { LayoutDashboard, Package, PlusCircle, HomeIcon,BoltIcon } from "lucide-react"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  LayoutDashboard,
+  Package,
+  PlusCircle,
+  HomeIcon,
+  BoltIcon,
+} from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function AdminPage() {
   return (
@@ -37,14 +43,14 @@ export default function AdminPage() {
               <HomeIcon className="h-4 w-4 md:h-5 md:w-5" /> Home
             </Button>
           </Link>
-                 <Link to="/" className="flex-1 md:flex-none">
-                  <Button
-                    variant="outline"
-                    className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
-                  >
-                    <BoltIcon className="h-4 w-4 md:h-5 md:w-5" /> Website
-                  </Button>
-                </Link>
+          <Link to="/admin/categories" className="flex-1 md:flex-none">
+            <Button
+              variant="outline"
+              className="w-full justify-center md:justify-start gap-2 rounded-xl border-gray-300 text-gray-700 hover:text-indigo-700 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-300 text-sm md:text-base"
+            >
+              <BoltIcon className="h-4 w-4 md:h-5 md:w-5" /> Category
+            </Button>
+          </Link>
         </nav>
       </aside>
 
@@ -57,12 +63,12 @@ export default function AdminPage() {
           </CardHeader>
           <CardContent>
             <p className="text-gray-600 leading-relaxed text-sm md:text-base text-center md:text-left">
-              Use the navigation to manage your products and add new items.
-              Stay productive with a clean and modern dashboard.
+              Use the navigation to manage your products and add new items. Stay
+              productive with a clean and modern dashboard.
             </p>
           </CardContent>
         </Card>
       </main>
     </div>
-  )
+  );
 }

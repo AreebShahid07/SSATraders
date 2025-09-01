@@ -19,7 +19,10 @@ const DeleteProduct = ({ product, onConfirm, onCancel }) => {
             <Button variant="outline" onClick={onCancel}>
               Cancel
             </Button>
-            <Button variant="destructive" onClick={() => onConfirm(product.$id)}>
+            <Button
+              variant="destructive"
+              onClick={() => onConfirm(product.$id)}
+            >
               Delete
             </Button>
           </div>

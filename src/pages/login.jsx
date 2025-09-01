@@ -1,43 +1,41 @@
-import React from "react"
-import { useForm } from "react-hook-form"
-import { FcGoogle } from "react-icons/fc"
-import { Mail, Lock } from "lucide-react"
+import React from "react";
+import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import { Mail, Lock } from "lucide-react";
 
-// shadcn/ui components
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 
-// backend functions
-import { login, loginWithGoogle } from "../backend/auth"
+import { login, loginWithGoogle } from "../backend/auth";
 
 export default function LoginForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      const user = await login(data.email, data.password)
-      console.log("User logged in:", user)
-      alert("Login successful!")
+      const user = await login(data.email, data.password);
+      console.log("User logged in:", user);
+      alert("Login successful!");
     } catch (err) {
-      console.error("Login error:", err)
-      alert(err.message)
+      console.error("Login error:", err);
+      alert(err.message);
     }
-  }
+  };
 
   const handleGoogleLogin = async () => {
     try {
-      await loginWithGoogle()
+      await loginWithGoogle();
     } catch (err) {
-      console.error("Google login error:", err)
-      alert(err.message)
+      console.error("Google login error:", err);
+      alert(err.message);
     }
-  }
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 p-4">
@@ -133,5 +131,5 @@ export default function LoginForm() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

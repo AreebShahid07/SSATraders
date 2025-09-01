@@ -65,3 +65,69 @@ export async function deleteProduct(productId) {
     throw error;
   }
 }
+
+export async function addCategory(category) {
+  try {
+    return await databases.createDocument(
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      import.meta.env.VITE_APPWRITE_CATEGORIES_ID, 
+      "unique()",
+      category
+    );
+  } catch (error) {
+    console.error("Add category error:", error);
+    throw error;
+  }
+}
+
+export async function getCategories() {
+  try {
+    return await databases.listDocuments(
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      import.meta.env.VITE_APPWRITE_CATEGORIES_ID
+    );
+  } catch (error) {
+    console.error("Get categories error:", error);
+    throw error;
+  }
+}
+
+export async function getCategoryById(categoryId) {
+  try {
+    return await databases.getDocument(
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      import.meta.env.VITE_APPWRITE_CATEGORIES_ID,
+      categoryId
+    );
+  } catch (error) {
+    console.error("Get category error:", error);
+    throw error;
+  }
+}
+
+export async function updateCategory(categoryId, updates) {
+  try {
+    return await databases.updateDocument(
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      import.meta.env.VITE_APPWRITE_CATEGORIES_ID,
+      categoryId,
+      updates
+    );
+  } catch (error) {
+    console.error("Update category error:", error);
+    throw error;
+  }
+}
+
+export async function deleteCategory(categoryId) {
+  try {
+    return await databases.deleteDocument(
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      import.meta.env.VITE_APPWRITE_CATEGORIES_ID,
+      categoryId
+    );
+  } catch (error) {
+    console.error("Delete category error:", error);
+    throw error;
+  }
+}

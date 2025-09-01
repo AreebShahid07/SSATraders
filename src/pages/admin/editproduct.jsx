@@ -18,7 +18,7 @@ const EditProduct = ({ product, onSave, onCancel }) => {
       reset({
         name: product.name || "",
         price: product.price || "",
-        quantity: product.quantity || "",
+        category: product.category || "",
         description: product.description || "",
         imageUrl: product.imageUrl || "",
       });
@@ -56,7 +56,8 @@ const EditProduct = ({ product, onSave, onCancel }) => {
                 type="number"
                 step="0.01"
                 {...register("price", {
-                  required: "Price is required", valueAsNumber: true ,
+                  required: "Price is required",
+                  valueAsNumber: true,
                   min: { value: 1, message: "Price must be at least 1" },
                 })}
                 placeholder="Enter product price"
@@ -67,21 +68,19 @@ const EditProduct = ({ product, onSave, onCancel }) => {
             </div>
 
             <div>
-              <Label>Quantity</Label>
+              <Label>Category</Label>
               <Input
-                type="number"
-                {...register("quantity", {
-                  required: "Quantity is required",
-                  valueAsNumber: true,
-                  min: { value: 0, message: "Quantity cannot be negative" },
+                type="text"
+                {...register("category", {
+                  required: "Category is required",
                 })}
-                placeholder="Enter stock quantity"
+                placeholder="Enter product category"
               />
-              {errors.quantity && (
-                <p className="text-red-500 text-sm">{errors.quantity.message}</p>
+              {errors.category && (
+                <p className="text-red-500 text-sm">{errors.category.message}</p>
               )}
             </div>
-
+                  
             <div>
               <Label>Description</Label>
               <Input

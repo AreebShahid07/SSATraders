@@ -12,7 +12,7 @@ export default function AdminRoute({ children }) {
     async function checkUser() {
       const user = await getCurrentUser();
       console.log("Current user:", user);
-      if (user && (user.email === "admin@gmail.com" || user.email === "maryamtahir236@gmail.com")) {
+      if (user && (user.email === "admin@gmail.com" || user.email === "ssatrader121@gmail.com" || user.email === "raminsajjad7@gmail.com")) {
         setIsAdmin(true);
       }
       setLoading(false);
